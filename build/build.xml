@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+  ~ @package   MagicEraser
+  ~ @copyright Copyright (c)2021-2021 Akeeba Ltd
+  ~ @license   GNU General Public License version 3, or later
+  -->
+
+<project name="MagicEraser" description="Magic Eraser" default="git" >
+	<import file="${phing.dir}/../../buildfiles/phing/common.xml" />
+
+	<!-- Default properties, set only if not already assigned in the build.properties file -->
+	<property name="dirs.library" value="${dirs.root}/file_magiceraser" />
+
+	<target name="all" description="Makes everything"
+			depends="git">
+	</target>
+
+	<target name="documentation" description="No documentation in the repository">
+	</target>
+
+	<target name="git" description="Makes only the library package"
+			depends="new-release,setup-properties,library-package">
+	</target>
+
+	<target name="library-package" description="Magic Eraser package"
+			depends="new-release,setup-properties">
+
+		<copy file="templates/file_magiceraser.xml" tofile="${dirs.root}/file_magiceraser.xml" overwrite="true">
+			<filterchain>
+				<replacetokens begintoken="##" endtoken="##">
+					<token key="DATE" value="${build.date}" />
+					<token key="VERSION" value="${version}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+		<copy file="${dirs.root}/file_magiceraser.xml" tofile="${dirs.library}/file_magiceraser.xml" overwrite="true" />
+
+		<!-- Create the package -->
+		<zipme basedir="${dirs.library}" prefix="file_magiceraser/" destfile="${dirs.release}/file_magiceraser-${version}.zip" includeemptydirs="true">
+			<fileset dir="${dirs.library}" id="library">
+				<include name="**" />
+				<exclude name="script.magiceraser.php" />
+			</fileset>
+		</zipme>
+		<zipme basedir="${dirs.library}" destfile="${dirs.release}/file_magiceraser-${version}.zip" includeemptydirs="true">
+			<fileset dir="${dirs.library}">
+				<include name="script.magiceraser.php" />
+			</fileset>
+		</zipme>
+		<zipme basedir="${dirs.root}" destfile="${dirs.release}/file_magiceraser-${version}.zip" includeemptydirs="true">
+			<fileset dir="${dirs.root}">
+				<include name="file_magiceraser.xml" />
+			</fileset>
+		</zipme>
+
+		<!-- Clean up -->
+		<delete>
+			<fileset dir="${dirs.root}">
+				<include name="file_magiceraser.xml" />
+			</fileset>
+		</delete>
+	</target>
+
+</project>

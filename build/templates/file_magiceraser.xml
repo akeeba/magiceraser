@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ @package   MagicEraser
+  ~ @copyright Copyright (c)2021-2021 Akeeba Ltd
+  ~ @license   GNU General Public License version 3, or later
+  -->
+
+<extension type="file" version="3.9" method="upgrade">
+    <name>file_magiceraser</name>
+	<description>
+		<![CDATA[
+		Magic Eraser — Automatically remove obsolete extensions and files related to Akeeba extensions for Joomla!&trade;.
+		]]>
+	</description>
+	<creationDate>##DATE##</creationDate>
+	<author>Akeeba Ltd</author>
+	<authorEmail>nicholas@akeeba.com</authorEmail>
+	<authorUrl>https://www.akeeba.com</authorUrl>
+	<copyright>Copyright (c)2021-2021 Akeeba Ltd</copyright>
+	<license>GNU GPL v3 or later</license>
+	<version>##VERSION##</version>
+	<packager>Akeeba Ltd</packager>
+	<packagerurl>https://www.akeeba.com</packagerurl>
+
+	<fileset>
+		<files folder="files_magiceraser" target="media">
+			<file>.gitkeep</file>
+		</files>
+	</fileset>
+
+	<!-- Installation / uninstallation script file -->
+	<scriptfile>script.magiceraser.php</scriptfile>
+</extension>
