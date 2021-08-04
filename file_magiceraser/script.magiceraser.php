@@ -36,11 +36,12 @@ class file_magiceraserInstallerScript
 		'plg_system_oneclickaction',
 
 		// Libraries and frameworks
-		'lib_f0f',
+		'lib_f0f#prefix',
 		'lib_fof30',
 		'file_fof30',
 		'file_akeebastrapper',
 		'file_strapper',
+		'files_strapper',
 		'file_strapper30',
 
 		// Obsolete extensions formerly bundled with Akeeba Backup
@@ -72,6 +73,7 @@ class file_magiceraserInstallerScript
 		'plg_ars_tainting',
 		'plg_sh404sefextplugins_com_ars',
 		'file_ars',
+		'files_ars',
 		'mod_arsdlid',
 		'plg_system_arsjed',
 
@@ -561,15 +563,29 @@ HTML;
 				];
 
 			case 'file':
+			case 'files':
 				return [
 					'type'    => 'file',
 					'element' => $extensionName,
 				];
 
 			case 'lib':
+				$element = substr($extensionName, 4);
+
+				if (substr($element, -7) === '#prefix')
+				{
+					$element = 'lib_' . substr($element, 0, -7);
+				}
+
 				return [
-					'type'    => 'library',
-					'element' => $parts[1],
+					'type'        => 'library',
+					'element'     => $element,
+				];
+
+			case 'tpl':
+				return [
+					'type'    => 'template',
+					'element' => substr($extensionName, 4),
 				];
 		}
 
