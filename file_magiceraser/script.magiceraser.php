@@ -265,14 +265,17 @@ class file_magiceraserInstallerScript
 		 * The file must define the following array:
 		 *
 		 * $magicEraser = [
-		 *  'extensions' => [ .... ],
-		 *  'files'      => [ .... ],
-		 *  'folders'    => [ .... ],
+		 *  'extensions' => [ .... ], // added to $this->obsoleteExtensions
+		 *  'files'      => [ .... ], // added to $this->files
+		 *  'folders'    => [ .... ], // added to $this->folders
 		 * ];
 		 *
 		 * Each folder must follow the format of the respective folder defined in this class.
 		 *
 		 * We use this file for the migration of our own site.
+		 *
+		 * If you include file_fof40 in 'extensions' FOF 4 will also be uninstalled (and its dependencies removed).
+		 * If you include file_fef in 'extensions' FEF will also be uninstalled (and its dependencies removed).
 		 */
 		$this->importAdditionalManifest(JPATH_SITE . '/media/magiceraser.php');
 
@@ -425,11 +428,25 @@ HTML;
 
 	private function removeDependencyInformation()
 	{
+		// FOF 3.x and Strapper 3.x dependency keys are always removed
+		$removeCommonKeys = ['fof30', 'strapper30'];
+
+		// If you're removing FOF 4.x I need to also remove its dependencies.
+		if (in_array('file_fof40', $this->obsoleteExtensions))
+		{
+			$removeCommonKeys[] = 'fof40';
+		}
+
+		// If you're removing FEF I need to also remove its dependencies.
+		if (in_array('file_fef', $this->obsoleteExtensions))
+		{
+			$removeCommonKeys[] = 'file_fef';
+		}
+
 		$db       = Factory::getDbo();
-		$killKeys = ['fof30', 'strapper30'];
 		$query    = $db->getQuery(true)
 			->delete($db->quoteName('#__akeeba_common'))
-			->where($db->quoteName('key') . 'IN(' . implode(', ', array_map([$db, 'quote'], $killKeys)) . ')');
+			->where($db->quoteName('key') . 'IN(' . implode(', ', array_map([$db, 'quote'], $removeCommonKeys)) . ')');
 		try
 		{
 			$db->setQuery($query)->execute();
