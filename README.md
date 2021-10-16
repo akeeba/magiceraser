@@ -292,7 +292,6 @@ If you are still using an older version of Akeeba Subscriptions please make sure
 These should be removed when removing the package. We try to uninstall the individual extensions included in the package as a safe fallback.
 
 * `plg_user_yubikey`
-* `plg_twofactorauth_yubikey`
 * `plg_authentication_yubikey`
 * `plg_twofactorauth_yubikeytotp`
 * `plg_twofactorauth_yubikeyplus`

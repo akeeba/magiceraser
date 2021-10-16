@@ -206,7 +206,6 @@ class file_magiceraserInstallerScript
 
 		// Obsolete extensions formerly bundled with Akeeba YubiKey Authentication Plugins
 		'plg_user_yubikey',
-		'plg_twofactorauth_yubikey',
 		'plg_authentication_yubikey',
 		'plg_twofactorauth_yubikeytotp',
 		'plg_twofactorauth_yubikeyplus',
