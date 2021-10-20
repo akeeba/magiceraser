@@ -34,6 +34,7 @@ class file_magiceraserInstallerScript
 		'pkg_yubikey',
 		'pkg_yubikey_plugins',
 		'plg_system_oneclickaction',
+		'pkg_compliance',
 
 		// Libraries and frameworks
 		'lib_f0f#prefix',
