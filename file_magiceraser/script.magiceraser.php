@@ -403,7 +403,7 @@ $body
 	Please ignore any Joomla notices (stuff over yellow background) you see BEFORE or AFTER this here message, including the “Extension Install: Custom install routine failure” mesage. They are to be expected when removing leftovers.
 </p>
 <p>
-	Please also ignore the error message “Error installing file” AFTER this here message. This is also expected. Magic Eraser is actually not an installable extension. It's just a cleanup script wrapepd inside a Joomla extension package. After the script has finished running we tell Joomla to abort the installation attempt. This causes this error to appear WITHOUT causing any problems to your site. In fact, it's just a smart way to clean up obsolete extensions <em>without</em> having you install yet another extension that needs to be immediately uninstalled. Less work for you!
+	Please also ignore the error message “Error installing file” AFTER this here message. This is also expected. Magic Eraser is actually not an installable extension. It's just a cleanup script wrapped inside a Joomla extension package. After the script has finished running we tell Joomla to abort the installation attempt. This causes this error to appear WITHOUT causing any problems to your site. In fact, it's just a smart way to clean up obsolete extensions <em>without</em> having you install yet another extension that needs to be immediately uninstalled. Less work for you!
 </p>
 </div>
 HTML;
