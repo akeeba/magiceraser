@@ -2,13 +2,13 @@
 
 <!--
   ~ @package   MagicEraser
-  ~ @copyright Copyright (c)2021-2022 Akeeba Ltd
+  ~ @copyright Copyright (c)2021-2024 Akeeba Ltd
   ~ @license   GNU General Public License version 3, or later
   -->
 
 <!--
   ~ @package   MagicEraser
-  ~ @copyright Copyright (c)2021-2021 Akeeba Ltd
+  ~ @copyright Copyright (c)2021-2024 Akeeba Ltd
   ~ @license   GNU General Public License version 3, or later
   -->
 
@@ -23,7 +23,7 @@
 	<author>Akeeba Ltd</author>
 	<authorEmail>nicholas@akeeba.com</authorEmail>
 	<authorUrl>https://www.akeeba.com</authorUrl>
-	<copyright>Copyright (c)2021-2021 Akeeba Ltd</copyright>
+	<copyright>Copyright (c)2021-2024 Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
 	<packager>Akeeba Ltd</packager>
